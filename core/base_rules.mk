@@ -72,7 +72,7 @@ ifneq ($(filter $(LOCAL_MODULE_TAGS),user),)
   $(warning * Now, the module must be listed in the PRODUCT_PACKAGES)
   $(warning * section of a product makefile to have it installed.)
   $(warning * )
-  $(error user tag detected on module.)
+  $(warning * user tag detected on module.)
 endif
 
 # Only the tags mentioned in this test are expected to be set by module
