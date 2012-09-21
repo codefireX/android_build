@@ -61,28 +61,12 @@ ifeq (,$(LOCAL_MODULE_TAGS))
   LOCAL_MODULE_TAGS := optional
 endif
 
-# User tags are not allowed anymore.  Fail early because it will not be installed
-# like it used to be.
-ifneq ($(filter $(LOCAL_MODULE_TAGS),user),)
-  $(warning *** Module name: $(LOCAL_MODULE))
-  $(warning *** Makefile location: $(LOCAL_MODULE_MAKEFILE))
-  $(warning * )
-  $(warning * Module is attempting to use the 'user' tag.  This)
-  $(warning * used to cause the module to be installed automatically.)
-  $(warning * Now, the module must be listed in the PRODUCT_PACKAGES)
-  $(warning * section of a product makefile to have it installed.)
-  $(warning * )
-  $(warning * user tag detected on module.)
-endif
-
 # Only the tags mentioned in this test are expected to be set by module
 # makefiles. Anything else is either a typo or a source of unexpected
 # behaviors.
-ifneq ($(filter-out debug eng tests optional samples shell_ash shell_mksh,$(LOCAL_MODULE_TAGS)),)
+ifneq ($(filter-out debug eng user tests optional samples shell_ash shell_mksh,$(LOCAL_MODULE_TAGS)),)
 $(warning unusual tags $(LOCAL_MODULE_TAGS) on $(LOCAL_MODULE) at $(LOCAL_PATH))
 endif
-
-
 
 # Add implicit tags.
 #
@@ -516,9 +500,9 @@ endif
 # Save the installed files in ALL_HOST_INSTALLED_FILES.
 ifeq ($(LOCAL_IS_HOST_MODULE),true)
   ALL_HOST_INSTALLED_FILES += $(LOCAL_INSTALLED_MODULE)
-  ifneq ($(filter debug eng tests, $(LOCAL_MODULE_TAGS)),)
-    $(warning $(LOCAL_MODULE_MAKEFILE): Module "$(LOCAL_MODULE)" has useless module tags: $(filter debug eng tests, $(LOCAL_MODULE_TAGS)). It will be installed anyway.)
-    LOCAL_MODULE_TAGS := $(filter-out debug eng tests, $(LOCAL_MODULE_TAGS))
+  ifneq ($(filter debug eng user tests, $(LOCAL_MODULE_TAGS)),)
+    $(warning $(LOCAL_MODULE_MAKEFILE): Module "$(LOCAL_MODULE)" has useless module tags: $(filter debug eng user tests, $(LOCAL_MODULE_TAGS)). It will be installed anyway.)
+    LOCAL_MODULE_TAGS := $(filter-out debug eng user tests, $(LOCAL_MODULE_TAGS))
   endif
 endif
 
