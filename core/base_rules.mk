@@ -501,8 +501,8 @@ endif
 ifeq ($(LOCAL_IS_HOST_MODULE),true)
   ALL_HOST_INSTALLED_FILES += $(LOCAL_INSTALLED_MODULE)
   ifneq ($(filter debug eng user tests, $(LOCAL_MODULE_TAGS)),)
-    $(warning $(LOCAL_MODULE_MAKEFILE): Module "$(LOCAL_MODULE)" has useless module tags: $(filter debug eng user tests, $(LOCAL_MODULE_TAGS)). It will be installed anyway.)
-    LOCAL_MODULE_TAGS := $(filter-out debug eng user tests, $(LOCAL_MODULE_TAGS))
+    $(warning $(LOCAL_MODULE_MAKEFILE): Module "$(LOCAL_MODULE)" has useless module tags: $(filter user debug eng tests, $(LOCAL_MODULE_TAGS)). It will be installed anyway.)
+    LOCAL_MODULE_TAGS := $(filter-out user debug eng tests, $(LOCAL_MODULE_TAGS))
   endif
 endif
 
