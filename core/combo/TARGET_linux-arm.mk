@@ -74,10 +74,10 @@ ifeq ($(TARGET_DEVICE_SAMSUNG),true)
 TARGET_arm_CFLAGS :=    -O2 \
 else
 TARGET_arm_CFLAGS :=    -O3 \
+endif
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
                         -funswitch-loops
-endif
 
 # Modules can choose to compile some source as thumb. As
 # non-thumb enabled targets are supported, this is treated
