@@ -71,7 +71,7 @@ endif
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
 ifeq ($(TARGET_DEVICE_SAMSUNG),true)
-TARGET_arm_CFLAGS :=    -O2 \
+TARGET_arm_CFLAGS :=    -Os \
 else
 TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
