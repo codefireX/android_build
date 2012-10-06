@@ -89,7 +89,7 @@ TARGET_thumb_CFLAGS :=  -mthumb \
                         -Werror=strict-aliasing
     else
 TARGET_thumb_CFLAGS :=  -mthumb \
-                        -O3 \
+                        -Os \
                         -fomit-frame-pointer \
                         -fstrict-aliasing \
                         -Wstrict-aliasing=2 \
