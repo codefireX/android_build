@@ -70,10 +70,17 @@ endif
 
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
+ifeq ($(ARCH_ARM_LOW_OPTIMIZATION),true)
+TARGET_arm_CFLAGS :=    -O2 \
+                        -fomit-frame-pointer \
+                        -fstrict-aliasing    \
+                        -funswitch-loops
+else
 TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
                         -funswitch-loops
+endif
 
 # Modules can choose to compile some source as thumb. As
 # non-thumb enabled targets are supported, this is treated
