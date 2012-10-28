@@ -162,7 +162,6 @@ TARGET_GLOBAL_LDFLAGS += \
 			-Wl,-z,noexecstack \
 			-Wl,-z,relro \
 			-Wl,-z,now \
-			-Wl,--icf=safe \
 			$(arch_variant_ldflags)
 
 # We only need thumb interworking in cases where thumb support
