@@ -17,11 +17,10 @@ LOCAL_PATH := $(call my-dir)
 
 # the signapk tool (a .jar application used to sign packages)
 # ============================================================
-include $(CLEAR_VARS)
 LOCAL_MODULE := signapk
-LOCAL_SRC_FILES := SignApk.java
-LOCAL_JAR_MANIFEST := SignApk.mf
 include $(BUILD_HOST_JAVA_LIBRARY)
+LOCAL_PREBUILT_JAVA_LIBRARIES := \
+	signapk$(COMMON_JAVA_PACKAGE_SUFFIX)
 
 ifeq ($(TARGET_BUILD_APPS),)
 # The post-build signing tools need signapk.jar, but we don't
