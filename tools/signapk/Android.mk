@@ -14,16 +14,12 @@
 # limitations under the License.
 #
 LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
 
 # the signapk tool (a .jar application used to sign packages)
 # ============================================================
 LOCAL_MODULE := signapk
-include $(BUILD_HOST_JAVA_LIBRARY)
 LOCAL_PREBUILT_JAVA_LIBRARIES := \
 	signapk$(COMMON_JAVA_PACKAGE_SUFFIX)
 
-ifeq ($(TARGET_BUILD_APPS),)
-# The post-build signing tools need signapk.jar, but we don't
-# need this if we're just doing unbundled apps.
-$(call dist-for-goals,droidcore,$(LOCAL_INSTALLED_MODULE))
-endif
+include $(BUILD_HOST_PREBUILT)
